@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="COBALTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="PhotoCategoryCodes">
+          <Key>
+            <PropertyRef Name="CategoryCode" />
+          </Key>
+          <Property Name="CategoryCode" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="CategoryDesc" Type="varchar" MaxLength="50" />
+          <Property Name="MainCategory" Type="varchar" MaxLength="50" />
+          <Property Name="BaseYN" Type="varchar" MaxLength="1" />
+          <Property Name="ExteriorYN" Type="varchar" MaxLength="1" />
+          <Property Name="InteriorYN" Type="varchar" MaxLength="1" />
+          <Property Name="GrassYN" Type="varchar" MaxLength="1" />
+          <Property Name="SnowYN" Type="varchar" MaxLength="1" />
+          <Property Name="WinterizationYN" Type="varchar" MaxLength="1" />
+          <Property Name="InitialSecureYN" Type="varchar" MaxLength="1" />
+          <Property Name="ConvCondYN" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="tbLoanImages">
+          <Key>
+            <PropertyRef Name="IMAGEID" />
+          </Key>
+          <Property Name="IMAGEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoanNumber" Type="varchar" MaxLength="16" />
+          <Property Name="MortgageCompany" Type="varchar" MaxLength="3" />
+          <Property Name="IMAGETYPE" Type="varchar" MaxLength="20" />
+          <Property Name="WhoScanned" Type="varchar" MaxLength="15" />
+          <Property Name="DateScanned" Type="datetime" />
+          <Property Name="ImageMemo" Type="varchar" MaxLength="50" />
+          <Property Name="SeqNumber" Type="int" />
+          <Property Name="WONUMBER" Type="int" />
+          <Property Name="WDOCID" Type="varchar" MaxLength="50" />
+          <Property Name="NumPages" Type="smallint" />
+          <Property Name="GrassNumber" Type="int" />
+          <Property Name="upsize_ts" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="dt_photo" Type="datetime" />
+          <Property Name="itemCode" Type="varchar" MaxLength="5" />
+          <Property Name="BeforeAft" Type="varchar" MaxLength="1" />
+          <Property Name="StatusCode" Type="varchar" MaxLength="3" />
+          <Property Name="LocationCode" Type="varchar" MaxLength="3" />
+          <Property Name="FloorCode" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityContainer Name="COBALTModelStoreContainer">
+          <EntitySet Name="PhotoCategoryCodes" EntityType="Self.PhotoCategoryCodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbLoanImages" EntityType="Self.tbLoanImages" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="COBALTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="PhotoCategoryCode">
+          <Key>
+            <PropertyRef Name="CategoryCode" />
+          </Key>
+          <Property Name="CategoryCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CategoryDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MainCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BaseYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ExteriorYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="InteriorYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="GrassYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="SnowYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="WinterizationYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="InitialSecureYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ConvCondYN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbLoanImage">
+          <Key>
+            <PropertyRef Name="IMAGEID" />
+          </Key>
+          <Property Name="IMAGEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoanNumber" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="MortgageCompany" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="IMAGETYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="WhoScanned" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="DateScanned" Type="DateTime" Precision="3" />
+          <Property Name="ImageMemo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SeqNumber" Type="Int32" />
+          <Property Name="WONUMBER" Type="Int32" />
+          <Property Name="WDOCID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NumPages" Type="Int16" />
+          <Property Name="GrassNumber" Type="Int32" />
+          <Property Name="upsize_ts" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="dt_photo" Type="DateTime" Precision="3" />
+          <Property Name="itemCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="BeforeAft" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="StatusCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="LocationCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="FloorCode" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="COBALTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PhotoCategoryCodes" EntityType="Self.PhotoCategoryCode" />
+          <EntitySet Name="tbLoanImages" EntityType="Self.tbLoanImage" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="COBALTModelStoreContainer" CdmEntityContainer="COBALTEntities">
+          <EntitySetMapping Name="PhotoCategoryCodes">
+            <EntityTypeMapping TypeName="COBALTModel.PhotoCategoryCode">
+              <MappingFragment StoreEntitySet="PhotoCategoryCodes">
+                <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+                <ScalarProperty Name="CategoryDesc" ColumnName="CategoryDesc" />
+                <ScalarProperty Name="MainCategory" ColumnName="MainCategory" />
+                <ScalarProperty Name="BaseYN" ColumnName="BaseYN" />
+                <ScalarProperty Name="ExteriorYN" ColumnName="ExteriorYN" />
+                <ScalarProperty Name="InteriorYN" ColumnName="InteriorYN" />
+                <ScalarProperty Name="GrassYN" ColumnName="GrassYN" />
+                <ScalarProperty Name="SnowYN" ColumnName="SnowYN" />
+                <ScalarProperty Name="WinterizationYN" ColumnName="WinterizationYN" />
+                <ScalarProperty Name="InitialSecureYN" ColumnName="InitialSecureYN" />
+                <ScalarProperty Name="ConvCondYN" ColumnName="ConvCondYN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbLoanImages">
+            <EntityTypeMapping TypeName="COBALTModel.tbLoanImage">
+              <MappingFragment StoreEntitySet="tbLoanImages">
+                <ScalarProperty Name="IMAGEID" ColumnName="IMAGEID" />
+                <ScalarProperty Name="LoanNumber" ColumnName="LoanNumber" />
+                <ScalarProperty Name="MortgageCompany" ColumnName="MortgageCompany" />
+                <ScalarProperty Name="IMAGETYPE" ColumnName="IMAGETYPE" />
+                <ScalarProperty Name="WhoScanned" ColumnName="WhoScanned" />
+                <ScalarProperty Name="DateScanned" ColumnName="DateScanned" />
+                <ScalarProperty Name="ImageMemo" ColumnName="ImageMemo" />
+                <ScalarProperty Name="SeqNumber" ColumnName="SeqNumber" />
+                <ScalarProperty Name="WONUMBER" ColumnName="WONUMBER" />
+                <ScalarProperty Name="WDOCID" ColumnName="WDOCID" />
+                <ScalarProperty Name="NumPages" ColumnName="NumPages" />
+                <ScalarProperty Name="GrassNumber" ColumnName="GrassNumber" />
+                <ScalarProperty Name="upsize_ts" ColumnName="upsize_ts" />
+                <ScalarProperty Name="dt_photo" ColumnName="dt_photo" />
+                <ScalarProperty Name="itemCode" ColumnName="itemCode" />
+                <ScalarProperty Name="BeforeAft" ColumnName="BeforeAft" />
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="LocationCode" ColumnName="LocationCode" />
+                <ScalarProperty Name="FloorCode" ColumnName="FloorCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

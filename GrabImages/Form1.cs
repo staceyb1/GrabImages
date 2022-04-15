@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using RestSharp;
+using System.Net;
 
 namespace GrabImages
 {
@@ -55,6 +59,48 @@ namespace GrabImages
                 this.pbImage.Image.Save(fileName);
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            JsonClass jc = new JsonClass
+            {
+                Date = DateTime.Parse("1/1/2022"),
+                Summary = "Hello"
+            };
+            JsonSerializerOptions jop = new JsonSerializerOptions();
+            jop.WriteIndented = true;
+
+            string jsonString = JsonSerializer.Serialize<JsonClass>(jc, jop);
+            Console.WriteLine(jsonString);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var client = new RestClient("https://fbvision.cognitiveservices.azure.com/customvision/v3.0/Prediction/77820dee-6d41-40a2-b3fa-1cf114772d35/classify/iterations/Iteration1/image");
+            //client..Timeout = -1;
+            var request = new RestRequest();
+            request.Method = Method.Post;
+
+            var ba = File.ReadAllBytes("./Images/Sump2.jpg");
+
+            var body = Parameter.CreateParameter("file", ba, ParameterType.RequestBody, false);
+            
+            request.Parameters.AddParameter(body);
+            request.AddHeader("Prediction-Key", "8af04695434e478d9d0b109842442f67");
+            request.AddHeader("Content-Type", "application/octet-stream");
+
+            var rr = client.ExecutePostAsync(request);
+            rr.Wait();
+            Console.WriteLine(rr.Result.ResponseStatus.ToString());
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            //using (WebClient client = new WebClient())
+            //{
+            //    client.UploadFile(address, filePath);
+            //}
         }
     }
 }
